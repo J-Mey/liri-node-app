@@ -59,18 +59,23 @@ var switchCase = function(userCase, userCommand){
             console.log("Language: " + response.data.Language);
             console.log("Plot: " + response.data.Plot);
             console.log("Actors: " + response.data.Actors);
+        
           });
     
     break;
 
     case "do-what-it-says":
-      console.log("fsnode")
+      fs.readFile("random.txt", "utf8", function (error, data) {
+        if(error) {
+          return console.log(error)
+        };
+          console.log(data);
+          var dataArr = data.split(",");
+          console.log(dataArr)
+      });
   
 
   }
-}
+};
 
 switchCase(userCase, userCommand);
-
-
-//fs node package
