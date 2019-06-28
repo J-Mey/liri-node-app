@@ -8,7 +8,8 @@ var fs = require("fs");
 var spotify = new Spotify(keys.spotify);
 
 var userCase = process.argv[2];
-var userCommand = process.argv[3];
+//var userCommand = process.argv[3];
+var userCommand = process.argv.slice(3).join(" ");
 
 // Switch case
 var switchCase = function(userCase, userCommand){
