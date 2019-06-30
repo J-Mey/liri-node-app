@@ -30,6 +30,9 @@ var switchCase = function(userCase, userCommand){
     break;
 
     case "spotify-this-song":
+      if(userCommand === " ") {
+        userCommand = "The Sign Ace of Base"
+      }
       spotify
         .search({type: 'track', query: userCommand, limit: 2}, function(err, data) {  
           if (err) {
@@ -50,6 +53,9 @@ var switchCase = function(userCase, userCommand){
 
     case "movie-this":
       var queryUrl = "http://www.omdbapi.com/?t=" + userCommand + "&y=&plot=short&apikey=trilogy";
+      if(userCommand === " ") {
+        userCommand = "Mr Nobody";
+      }
       axios.get(queryUrl)
       .then (function(response) {
             console.log("Title: " + response.data.Title);
