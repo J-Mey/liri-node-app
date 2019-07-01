@@ -69,3 +69,5 @@ It should run spotify-this-song for "I Want it That Way," as follows the text in
 * Bands in Town API
 * Spotify API
 * OMDB API
+
+Jeremy Mey was the developer in this application
