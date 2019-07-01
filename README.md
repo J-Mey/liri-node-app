@@ -12,8 +12,7 @@ Give a high-level overview of how the app is organized
 ## concert-this
 *node liri.js concert-this '<artist/band name here>'*
 
-![GitHub Logo](/images/logo.png)
-Format: ![Bands In Town API](https://github.com/J-Mey/liri-node-app/blob/master/Images/bandsintown.JPG?raw=true)
+![Bands In Town API](https://github.com/J-Mey/liri-node-app/blob/master/Images/bandsintown.JPG?raw=true)
 
 This will search the Bands in Town Artist Events API ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp") for an artist and render the following information about each event to the terminal:
 
