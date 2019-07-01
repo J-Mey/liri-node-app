@@ -4,11 +4,11 @@ var axios = require("axios");
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var fs = require("fs");
+var moment = require("moment");
 
 var spotify = new Spotify(keys.spotify);
 
 var userCase = process.argv[2];
-//var userCommand = process.argv[3];
 var userCommand = process.argv.slice(3).join(" ");
 
 // Switch case
@@ -21,7 +21,8 @@ var switchCase = function(userCase, userCommand){
           for (var i = 0; i < response.data.length; i++){
             console.log("Venue Name: " + response.data[i].venue.name);
             console.log("Venue Location: " + response.data[i].venue.city + ", " + response.data[i].venue.country);
-            console.log("Event Date: " + response.data[i].datetime);
+            var date = response.data[i].datetime;
+            console.log("Event Date (MM/DD/YYYY): " + moment(date).format('L'));
             console.log("----------------------");
           }
         }
@@ -30,11 +31,11 @@ var switchCase = function(userCase, userCommand){
     break;
 
     case "spotify-this-song":
-      if(userCommand === " ") {
-        userCommand = "The Sign Ace of Base"
-      }
+      /*if(userCommand === " ") {
+        userCommand = "The+Sign+Ace+of+Base"
+      }*/
       spotify
-        .search({type: 'track', query: userCommand, limit: 2}, function(err, data) {  
+        .search({type: 'track', query: userCommand, limit: 1}, function(err, data) {  
           if (err) {
             return console.log("Error occurred: " + err);
             }
@@ -52,10 +53,10 @@ var switchCase = function(userCase, userCommand){
     break;
 
     case "movie-this":
+        /*if(userCommand === " ") {
+          userCommand = "Mr+Nobody"
+        };*/
       var queryUrl = "http://www.omdbapi.com/?t=" + userCommand + "&y=&plot=short&apikey=trilogy";
-      if(userCommand === " ") {
-        userCommand = "Mr Nobody";
-      }
       axios.get(queryUrl)
       .then (function(response) {
             console.log("Title: " + response.data.Title);
@@ -78,7 +79,7 @@ var switchCase = function(userCase, userCommand){
         };
           console.log(data);
           var dataArr = data.split(",");
-          console.log(dataArr)
+          switchCase(dataArr[0], dataArr[1]);
       });
   
 
